@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montréal Youth Volleyball Club</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header with navigation bar inside -->
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="#">MYVC</a></div>
+            <ul class="menu">
+                <li><a href="about.html">About</a></li>
+                <li><a href="clubmembers.html">Club Members</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="main-content">
+            <h1>Welcome to Montréal Youth Volleyball Club</h1>
+            <p>Our club offers volleyball programs for youth aged 11-18, helping them develop into professional players.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year">2025</span> Montréal Youth Volleyball Club | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Automatically update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

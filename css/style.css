@@ -1,0 +1,185 @@
+/* Reset body margins */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Navigation Styles */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 15px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #092e5e;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav .navbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on small screens */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .navbar .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px; /* Reduced gap for small screens */
+}
+
+nav .navbar .menu li a {
+    text-decoration: none;
+    color: #dedede;
+    padding: 8px 12px;
+    font-weight: 500;
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: color 0.3s ease;
+}
+
+nav .navbar .menu li a:hover {
+    color: #fff;
+}
+
+nav .navbar .logo a {
+    text-decoration: none;
+    color: #dedede;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 80px; /* Matches nav height */
+    padding: 40px 20px;
+    min-height: calc(100vh - 160px); /* Full height minus nav and footer */
+    box-sizing: border-box;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.main-content h1 {
+    font-size: 2.5rem;
+    color: #092e5e;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Footer styles */
+footer {
+    background: #092e5e;
+    color: #dedede;
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw; /* Full viewport width */
+    margin: 0;
+    position: relative;
+    left: 0;
+    box-sizing: border-box;
+}
+
+footer p {
+    margin: 0;
+    padding: 10px 0;
+    max-width: 1200px; /* Optional: if you want content constrained */
+    margin: 0 auto; /* Center content while keeping full-width background */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 0;
+    }
+    
+    nav .navbar {
+        justify-content: center; /* Center items on small screens */
+        flex-direction: column; /* Stack logo and menu vertically */
+    }
+    
+    nav .navbar .menu {
+        margin-top: 10px;
+        flex-wrap: wrap; /* Allow menu items to wrap */
+        justify-content: center;
+        gap: 5px 15px; /* Reduced gap for small screens */
+    }
+    
+    nav .navbar .menu li a {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+    }
+    
+    nav .navbar .logo a {
+        font-size: 1.3rem;
+    }
+
+    main {
+        margin-top: 70px;
+        padding: 30px 15px;
+    }
+    
+    .main-content {
+        padding: 30px 0;
+    }
+    
+    .main-content h1 {
+        font-size: 2rem;
+    }
+    
+    .main-content p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .navbar .menu {
+        gap: 3px 10px; /* Even smaller gap for very small screens */
+    }
+    
+    nav .navbar .menu li a {
+        padding: 3px 6px;
+        font-size: 0.85rem;
+    }
+
+    main {
+        margin-top: 60px;
+        padding: 20px 10px;
+    }
+    
+    .main-content {
+        padding: 20px 0;
+    }
+    
+    .main-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .main-content p {
+        font-size: 1rem;
+    }
+    
+    footer {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
