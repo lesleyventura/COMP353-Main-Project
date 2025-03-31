@@ -11,9 +11,9 @@
         <div class="navbar">
             <div class="logo"><a href="index.html">MYVC</a></div>
             <ul class="menu">
-                <li><a href="about.html" aria-current="page">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="clubmembers.html">Club Members</a></li>
-                <li><a href="payments.html">Payments</a></li>
+                <li><a href="payments.html" aria-current="page">Payments</a></li>
                 <li><a href="teams.html">Teams</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -22,15 +22,93 @@
 
     <main>
         <section class="main-content">
-            <h1>Our Competitive Teams</h1>
-            <div class="team-grid">
-                <p>Nothing yet</p>
+            <h1>Payments Management</h1>
+            
+            <!-- Pre-determined Functions Section -->
+            <div class="pre-determined-functions">
+                <h2>Pre-determined SQL Queries</h2>
+                <div class="query-container">
+                    <label for="queryTemplates">Select an Action:</label>
+                    <select id="queryTemplates" onchange="fillQuery()">
+                        <option value="">-- Select an Action --</option>
+                        <!-- Example for Payments -->
+                        <option value="SELECT * FROM teams WHERE team_name LIKE '{value}%';">Get Teams Starting with</option>
+                        <option value="SELECT * FROM team_formations WHERE location_id = {value};">Get Team Formations for a Location</option>
+                         <!-- Add more queries related to payments -->
+                    </select>
+                    <textarea id="actionQuery" placeholder="Action will appear here..." readonly></textarea>
+                    <textarea id="userInput" placeholder="Enter your value here..."></textarea>
+                    <button onclick="submitQuery()">Submit Query</button>
+                    <div id="result"></div>
+                </div>
             </div>
+
+            <!-- Custom Functions Section -->
+            <div class="custom-functions">
+                <h2>Custom SQL Queries</h2>
+                <div class="query-container">
+                    <label for="customQuery">Enter Custom Query:</label>
+                    <textarea id="customQuery" placeholder="Enter your custom SQL query here..."></textarea>
+                    <button onclick="submitCustomQuery()">Submit Custom Query</button>
+                    <div id="customResult"></div>
+                </div>
+            </div>
+
         </section>
     </main>
 
     <footer>
         <p>&copy; <span id="year">2025</span> Montréal Youth Volleyball Club | All Rights Reserved</p>
     </footer>
+
+    <script>
+        function fillQuery() {
+            let selectedQuery = document.getElementById("queryTemplates").value;
+            document.getElementById("actionQuery").value = selectedQuery;
+        }
+
+        function submitQuery() {
+            let actionQuery = document.getElementById("actionQuery").value;
+            let userInput = document.getElementById("userInput").value;
+            
+            if (!actionQuery.includes("{value}")) {
+                document.getElementById("result").innerText = "Please select a query template.";
+                return;
+            }
+            
+            let finalQuery = actionQuery.replace("{value}", userInput);
+            
+            fetch("query.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: finalQuery })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function submitCustomQuery() {
+            let customQuery = document.getElementById("customQuery").value;
+            
+            if (!customQuery.trim()) {
+                document.getElementById("customResult").innerText = "Please enter a custom query.";
+                return;
+            }
+            
+            fetch("query.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: customQuery })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("customResult").innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
 </body>
 </html>
