@@ -1,185 +1,121 @@
-/* Reset body margins */
-body {
+/* General styles */
+body, html {
+    height: 100%;
     margin: 0;
     padding: 0;
-}
-
-/* Base Navigation Styles */
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 15px 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #092e5e;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-nav .navbar {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on small screens */
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-nav .navbar .menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 10px; /* Reduced gap for small screens */
-}
-
-nav .navbar .menu li a {
-    text-decoration: none;
-    color: #dedede;
-    padding: 8px 12px;
-    font-weight: 500;
-    white-space: nowrap; /* Prevent text wrapping */
-    transition: color 0.3s ease;
-}
-
-nav .navbar .menu li a:hover {
-    color: #fff;
-}
-
-nav .navbar .logo a {
-    text-decoration: none;
-    color: #dedede;
-    font-weight: bold;
-    font-size: 1.5rem;
-    padding: 5px 0;
-    display: inline-block;
-}
-
-/* Main Content Styles */
-main {
-    margin-top: 80px; /* Matches nav height */
-    padding: 40px 20px;
-    min-height: calc(100vh - 160px); /* Full height minus nav and footer */
-    box-sizing: border-box;
-}
-
-.main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 40px 0;
-}
-
-.main-content h1 {
-    font-size: 2.5rem;
-    color: #092e5e;
-    margin-bottom: 20px;
-}
-
-.main-content p {
-    font-size: 1.2rem;
+    flex-direction: column;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
     color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #004080;
+    padding: 20px;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Main layout */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main content container */
+.main-content {
+    width: 90%;
     max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Footer styles */
-footer {
-    background: #092e5e;
-    color: #dedede;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 20px 0;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100vw; /* Full viewport width */
-    margin: 0;
-    position: relative;
-    left: 0;
-    box-sizing: border-box;
 }
 
-footer p {
-    margin: 0;
-    padding: 10px 0;
-    max-width: 1200px; /* Optional: if you want content constrained */
-    margin: 0 auto; /* Center content while keeping full-width background */
+/* Query Container */
+.query-container {
+    background: #e6f0ff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-top: 20px; /* Adds space above the container */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    nav {
-        padding: 10px 0;
-    }
-    
-    nav .navbar {
-        justify-content: center; /* Center items on small screens */
-        flex-direction: column; /* Stack logo and menu vertically */
-    }
-    
-    nav .navbar .menu {
-        margin-top: 10px;
-        flex-wrap: wrap; /* Allow menu items to wrap */
-        justify-content: center;
-        gap: 5px 15px; /* Reduced gap for small screens */
-    }
-    
-    nav .navbar .menu li a {
-        padding: 5px 8px;
-        font-size: 0.9rem;
-    }
-    
-    nav .navbar .logo a {
-        font-size: 1.3rem;
-    }
+/* Label */
+.query-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px; /* Adds space below the label */
+}
 
-    main {
-        margin-top: 70px;
-        padding: 30px 15px;
-    }
-    
+/* Textarea */
+textarea {
+    width: 96%;
+    max-width: 100%; /* Prevents overflow */
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* Allows resizing vertically */
+}
+
+/* Buttons */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #003366;
+}
+
+/* Footer */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
     .main-content {
-        padding: 30px 0;
-    }
-    
-    .main-content h1 {
-        font-size: 2rem;
-    }
-    
-    .main-content p {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    nav .navbar .menu {
-        gap: 3px 10px; /* Even smaller gap for very small screens */
-    }
-    
-    nav .navbar .menu li a {
-        padding: 3px 6px;
-        font-size: 0.85rem;
-    }
-
-    main {
-        margin-top: 60px;
-        padding: 20px 10px;
-    }
-    
-    .main-content {
-        padding: 20px 0;
-    }
-    
-    .main-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .main-content p {
-        font-size: 1rem;
-    }
-    
-    footer {
+        width: 95%;
         padding: 15px;
-        font-size: 0.9rem;
+    }
+
+    textarea {
+        height: 80px; /* Adjust for smaller screens */
+    }
+
+    button {
+        font-size: 14px;
     }
 }
