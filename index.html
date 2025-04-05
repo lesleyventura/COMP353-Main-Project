@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="serverStatus" style="position: fixed; top: 10px; left: 10px; padding: 8px 12px; background-color: green; color: white; border-radius: 5px; display: none;">
+    Connected
+</div>
+
     <nav>
         <div class="navbar">
             <div class="logo"><a href="index.html">Montreal Youth Volleyball Club (MYVC)</a></div>
@@ -36,6 +40,26 @@
     </footer>
     
     <script>
+
+        window.addEventListener("DOMContentLoaded", () => {
+    fetch("query.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ping: true })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "ok") {
+            document.getElementById("serverStatus").style.display = "block";
+        }
+    })
+    .catch(err => {
+        console.error("Server not reachable:", err);
+    });
+});
+
+
+        
         function fillQuery() {
             let selectedQuery = document.getElementById("queryTemplates").value;
             document.getElementById("actionQuery").value = selectedQuery;
