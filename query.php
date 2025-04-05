@@ -8,13 +8,14 @@ $username = "wqc353_4";
 $password = "WTeam123";
 $dbname = "wqc353_4";
 
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die(json_encode(["error" => "Connection failed: " . $conn->connect_error]));
 }
 
-// Execute SQL queries
+// Function to execute SQL queries
 function executeQuery($sql) {
     global $conn;
     $result = $conn->query($sql);
@@ -32,16 +33,10 @@ function executeQuery($sql) {
     }
 }
 
-//  API 
+// Handling API requests
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $input = json_decode(file_get_contents("php://input"), true);
     
-    if (isset($input['ping'])) {
-        echo json_encode(["status" => "ok"]);
-        $conn->close();
-        exit;
-    }
-
     if (isset($input['query'])) {
         $sql = $input['query'];
         $response = executeQuery($sql);
